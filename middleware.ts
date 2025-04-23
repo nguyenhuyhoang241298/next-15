@@ -1,6 +1,5 @@
-import NextAuth from 'next-auth'
 import { createI18nMiddleware } from 'next-international/middleware'
-import authConfig from './lib/auth/auth.config'
+import { auth } from './auth'
 import {
   apiAuthPrefix,
   authRoutes,
@@ -14,8 +13,6 @@ const I18nMiddleware = createI18nMiddleware({
   defaultLocale: 'en',
   urlMappingStrategy: 'rewrite',
 })
-
-const { auth } = NextAuth(authConfig)
 
 export default auth((req) => {
   const { nextUrl } = req
