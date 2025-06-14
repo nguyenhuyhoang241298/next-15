@@ -1,9 +1,10 @@
 import { signOut } from '@/auth'
+import { env } from '@/env'
 import { signOut as signOutClient } from 'next-auth/react'
 import { GetUrlOptions } from './type'
 
 export const getUrl = ({
-  baseUrl = process.env.NEXT_PUBLIC_API_ENDPOINT ?? '',
+  baseUrl = env.NEXT_PUBLIC_API_ENDPOINT ?? '',
   path = '',
   params = {},
 }: GetUrlOptions) => {
