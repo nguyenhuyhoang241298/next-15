@@ -1,6 +1,5 @@
-'use server'
-
 import { auth } from '@/auth'
+import { getSession } from 'next-auth/react'
 
 export const getAuthorizationHeader = async ({
   hasAccessToken = true,
@@ -9,7 +8,8 @@ export const getAuthorizationHeader = async ({
 }): Promise<HeadersInit> => {
   if (!hasAccessToken) return {}
 
-  const session = await auth()
+  const session =
+    typeof window === 'undefined' ? await auth() : await getSession()
 
   if (!session) {
     return {}
