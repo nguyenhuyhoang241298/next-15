@@ -18,7 +18,7 @@ export default function Posts() {
       })
       const data = await res.json()
 
-      setPosts(data)
+      setPosts(data as Post[])
     }
     fetchPosts()
   }, [])
